@@ -226,6 +226,31 @@ a bit from the rules, such as:
 
 - Make the reader of the code aware of the hidden treasures in the source control history.
 
+## Error Message
+
+A good error message should contain the following three pieces of information:
+
+1. **Context**: What led to the error? What was the code trying to do when it failed?
+2. **The error itself**: What exactly failed?
+3. **Mitigation**: What needs to be done to overcome the error?
+
+### General recommendations
+
+- **Uniform voice and style**: Maintain a consistent style in error messages, including voice,
+  casing, and punctuation, to improve readability.
+- **One concept, one term**: Use a single, consistent term for each concept across all error
+  messages and documentation to prevent confusion.
+- **Do not localize error messages**: Keep error messages in English for developers; if localization
+  is needed, include a common error code for easier searching.
+- **Do not make error messages an API contract**: Enable programmatic error handling by providing
+  machine-readable error codes or specific exception types, rather than requiring message parsing.
+- **Be cautious about exposing sensitive data**: Avoid including sensitive user information in error
+  messages to prevent privacy issues, particularly with data protected by regulations like GDPR.
+- **Either raise an exception OR log an error, but not both**: Report each error by either raising
+  an exception or logging it, but not both, to avoid redundant and confusing notifications.
+- **Fail early**: Report errors as soon as possible—ideally during build or start-up rather than at
+  runtime—to facilitate faster fixes and provide better context.
+
 ## Logging
 
 - **Use a standard logging framework:** Use the built-in Spring Boot default logging module (SLF4J).
