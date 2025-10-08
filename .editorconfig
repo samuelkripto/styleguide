@@ -1185,6 +1185,10 @@ ktlint_standard_string-template-indent = disabled
 ktlint_class_signature_rule_force_multiline_when_parameter_count_greater_or_equal_than = unset
 ktlint_function_signature_rule_force_multiline_when_parameter_count_greater_or_equal_than = unset
 
+[**/src/test/kotlin/**.kt]
+# test-only Kotlin rules
+ktlint_standard_annotation = disabled # allows `@Autowired constructor` to be on the same line
+
 [{*.markdown,*.md}]
 ij_markdown_force_one_space_after_blockquote_symbol = true
 ij_markdown_force_one_space_after_header_symbol = true
