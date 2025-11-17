@@ -77,4 +77,7 @@ rules:
     allowed-values: [ "true", "false" ]
     check-keys: false
     ignore: |
+      compose.yaml
+      compose.yml
+      docker-compose.yaml
       docker-compose.yml
