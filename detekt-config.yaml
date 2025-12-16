@@ -327,7 +327,7 @@ naming:
   active: true
   BooleanPropertyNaming:
     active: true
-    allowedPattern: '^(is|has|can|are|contain|allow|disallow|do|no|at|require|should|will)'
+    allowedPattern: '^(is|has|uses|can|allows|supports|requires|should|will|did|was|needs|contains|includes|matches|are)[A-Z]\w*|.*([Ee]xists)$'
   ClassNaming:
     active: true
     classPattern: '[A-Z][a-zA-Z0-9]*'
