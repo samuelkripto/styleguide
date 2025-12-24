@@ -800,9 +800,6 @@ ij_javascript_while_brace_force = never
 ij_javascript_while_on_new_line = false
 ij_javascript_wrap_comments = false
 
-[{*.ft,*.vm,*.vsl}]
-ij_vtl_keep_indents_on_empty_lines = false
-
 [{*.gant,*.groovy,*.gson,*.gy,*.gradle}]
 indent_size = 2
 tab_width = 2
@@ -1034,7 +1031,7 @@ ij_hcl_spaces_within_braces = false
 ij_hcl_spaces_within_brackets = false
 ij_hcl_wrap_long_lines = false
 
-[{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml}]
+[{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml,*.ft,*.vm,*.vsl}]
 indent_size = 2
 tab_width = 2
 ij_continuation_indent_size = 4
