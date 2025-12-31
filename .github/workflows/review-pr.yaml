@@ -7,7 +7,7 @@ on:
 jobs:
   review-title:
     name: Semantic Pull Request
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     if: github.actor != 'dependabot[bot]'
     steps:
       - uses: amannn/action-semantic-pull-request@0723387faaf9b38adef4775cd42cfd5155ed6017 # v5.5.3
