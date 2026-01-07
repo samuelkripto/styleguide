@@ -148,8 +148,118 @@ every text file should end with a `\n` or "newline" character.
 
 ### Boolean
 
-- For boolean variables, use the prefix `is`, `has`, or `can`.
-  - Examples: `isEnabled`, `hasAccess`, `canEdit`.
+#### 1. The Golden Rule
+
+**A boolean variable name should sound like a Yes/No question.**
+
+When placed inside a conditional statement (
+`if`), the code should read like a natural English sentence.
+
+- ✅ **Good:** `if (isOpen)` -> Reads as: "If it is open..."
+- ❌ **Bad:** `if (open)` -> Reads as: "If open..." (Ambiguous: Is this a command? A state?)
+
+#### 2. Choosing the Right Prefix
+
+While
+`is` is the most common prefix, it is not always the most accurate. Choose the auxiliary verb that best describes the
+**nature** of the boolean.
+
+##### A. State & Identity (`is`, `has`, `uses`, `exists`)
+
+Use these for current properties or ownership.
+
+| Prefix     | Usage                        | Example                                 |
+|:-----------|:-----------------------------|:----------------------------------------|
+| **`is`**   | General state or identity.   | `isValid`, `isVisible`, `isAdmin`       |
+| **`has`**  | Ownership or containment.    | `hasChildren`, `hasErrors`, `hasAccess` |
+| **`uses`** | Is it currently employing X? | `usesEncryption`, `usesCache`           |
+
+| Suffix       | Usage                             | Example                      |
+|:-------------|:----------------------------------|:-----------------------------|
+| **`exists`** | Existence checks (often DB/File). | `fileExists`, `recordExists` |
+
+##### B. Capabilities & Permissions (`can`, `allows`, `supports`, `requires`)
+
+Use these to define what the system or user is able to do.
+
+| Prefix         | Usage                          | Example                                 |
+|:---------------|:-------------------------------|:----------------------------------------|
+| **`can`**      | Ability to perform an action.  | `canExecute`, `canEdit`                 |
+| **`allows`**   | Permission or policy settings. | `allowsGuestAccess`, `allowsDuplicates` |
+| **`supports`** | Technical/Hardware features.   | `supportsBluetooth`, `supportsIPv6`     |
+| **`requires`** | A hard dependency.             | `requiresAuth`, `requiresRestart`       |
+
+##### C. Lifecycle & Time (`should`, `will`, `did`, `was`, `needs`)
+
+Use these for future intent, past history, or recommendations.
+
+| Prefix       | Usage                                | Example                          |
+|:-------------|:-------------------------------------|:---------------------------------|
+| **`should`** | Recommendation/necessity (often UI). | `shouldRender`, `shouldRetry`    |
+| **`will`**   | Definitive future outcome.           | `willOverwrite`, `willBlock`     |
+| **`did`**    | Completed action (history).          | `didFinish`, `didTimeout`        |
+| **`was`**    | Previous historical state.           | `wasCreated`, `wasSeen`          |
+| **`needs`**  | Requirement for a future state.      | `needsRefresh`, `needsMigration` |
+
+##### D. Content (`contains`, `includes`, `matches`)
+
+Use these for collections or string validation.
+
+| Prefix         | Usage                         | Example                               |
+|:---------------|:------------------------------|:--------------------------------------|
+| **`contains`** | Membership in a collection.   | `containsItem`, `containsSpecialChar` |
+| **`includes`** | Membership in a collection.   | `includesTax`                         |
+| **`matches`**  | Regex or pattern conformance. | `matchesFilter`, `matchesRegex`       |
+
+##### E. Plurals & Relationships (`are`)
+
+Use this when checking the state of a group or a mutual relationship between multiple items.
+
+| Prefix    | Usage                          | Example                                 |
+|:----------|:-------------------------------|:----------------------------------------|
+| **`are`** | Plural states or mutual links. | `areFriends`, `areEqual`, `areAllReady` |
+
+#### 3. Anti-Patterns (What to Avoid)
+
+##### 🚫 The "Flag" Suffix
+
+Do not put the type in the name. We know it's a boolean; tell us what it means.
+
+- **Bad:** `loginFlag`, `validStatus`, `checkBit`
+- **Good:** `isLoggedIn`, `isValid`, `isChecked`
+
+##### 🚫 Negatives
+
+Keep logic positive. Standard convention is usually `isEnabled`.
+
+- **Bad:** `isDisabled`, `disallowsGuest`, `excludesItem`
+- **Good:** `isEnabled`, `allowsGuest`, `includesItem`
+
+##### 🚫 Double Negatives
+
+Logic becomes incredibly hard to parse when you negate a negative variable.
+
+- **Bad:** `isNotEnabled` (Checking `!isNotEnabled` is painful).
+- **Good:** `isEnabled`
+
+##### 🚫 Ambiguous Nouns
+
+A noun by itself usually implies an object (String, Class, Dictionary), not a boolean.
+
+- **Bad:** `user`, `answer`, `file`
+- **Good:** `isUser`, `hasAnswer`, `fileExists`
+
+##### 🚫 Third-person Singular Question Form
+
+- **Acceptable:** `doesFileExist` (Valid, answers Yes/No), `doesSupportHdr`
+- **Better:** `fileExists`, `hasFile`, `supportsHdr`
+
+##### 🚫 Commands
+
+The word `do` is almost always a command.
+
+- **Bad:** `doLog`, `doUpdate` (looks like a function name: `function doUpdate() { ... }`)
+- **Good:** `shouldLog`, `isLoggingEnabled`, `isUpdated`
 
 ### DateTime
 
